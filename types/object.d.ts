@@ -1,6 +1,6 @@
 type fetchedTrackResponse = {
-  track: SpotifyApi.TrackObjectFull | undefined
-  rawResponse: Response
+  message: string
+  track: SpotifyApi.TrackObjectFull
 }
 
 type trackResponse = {

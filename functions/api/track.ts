@@ -8,14 +8,12 @@ export const onRequestGet: PagesFunction<Bindings> = async (ctx) => {
   }
   // const req = new Request(`${requestUrl.origin}/?url=${trackUrl}`, ctx.request)
 
-  const { track, rawResponse } = (await ctx.env.API_WORKER.fetch(
-    ctx.request
-  )) as unknown as fetchedTrackResponse
-
-  if (track === undefined) {
-    return rawResponse
+  const response = await ctx.env.API_WORKER.fetch(ctx.request)
+  if (!response.ok) {
+    return response
   }
 
+  const { track } = (await response.json()) as fetchedTrackResponse
   const nowPlaying = `#NowPlaying
 ${track.name} / ${track.artists.join(', ')} - ${track.album}
 ${trackUrl}
@@ -25,9 +23,10 @@ ${trackUrl}
     nowPlaying,
     albumArtwork: track.album.images[0],
   }
+
   return new Response(JSON.stringify(resp), {
-    headers: rawResponse.headers,
-    status: rawResponse.status,
-    statusText: rawResponse.statusText,
+    headers: response.headers,
+    status: response.status,
+    statusText: response.statusText,
   })
 }
