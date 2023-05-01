@@ -27,7 +27,7 @@
       ]
     },
     "typeRoots": [
-      "src/types"
+      "types"
     ],
     "types": [
       "@cloudflare/workers-types",
@@ -36,7 +36,10 @@
   },
   "include": [
     "src",
-    "functions"
+    "functions",
+    "lib",
+    "utils",
+    "types"
   ],
   "references": [
     {

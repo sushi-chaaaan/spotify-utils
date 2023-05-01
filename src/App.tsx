@@ -1,12 +1,36 @@
 import '@/src/App.css'
 
-// import { useState } from 'react'
+import { FormEventHandler, useState } from 'react'
+
+import { callApi } from '@/lib/callApi'
 
 // import viteLogo from '/vite.svg'
 // import reactLogo from '@/src/assets/react.svg'
 
 function App() {
   // const [count, setCount] = useState(0)
+  const [imageUrl, setImageUrl] = useState('')
+
+  const getArtwork = async (url: string) => {
+    const res = (await callApi(
+      `/api/track?url=${url}`
+    )) as SpotifyApi.TrackObjectFull
+    console.log(res)
+    return res.album.images[0].url
+  }
+
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault()
+    console.debug(e)
+    const { value: trackUrl } = (e.target as HTMLFormElement).trackUrl
+    getArtwork(trackUrl)
+      .then((res) => {
+        setImageUrl(res)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 
   return (
     <>
@@ -21,6 +45,15 @@ function App() {
             <li>Get artworks</li>
           </ul>
         </p>
+
+        <div>
+          <h2>Example: get track artworks</h2>
+          <form onSubmit={handleSubmit}>
+            <input defaultValue="" name="trackUrl" type="text" />
+            <input type="submit" value="Submit" />
+          </form>
+          <img src={imageUrl} width="600" />
+        </div>
       </div>
       {/* <div>
         <a href="https://vitejs.dev" rel="noreferrer" target="_blank">

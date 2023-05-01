@@ -1,4 +1,4 @@
-import { doFetch, handleResponse } from '@/functions/utils/fetch'
+import { doFetch, handleResponse } from '@/utils/fetch'
 
 class spotifyWorkersClient {
   private AccessTokenCache: KVNamespace
