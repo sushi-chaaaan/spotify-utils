@@ -12,11 +12,9 @@ function App() {
   const [imageUrl, setImageUrl] = useState('')
 
   const getArtwork = async (url: string) => {
-    const res = (await callApi(
-      `/api/track?url=${url}`
-    )) as SpotifyApi.TrackObjectFull
+    const res = (await callApi(`/api/track?url=${url}`)) as trackInfo
     console.log(res)
-    return res.album.images[0].url
+    return res.rawData.album.images[0].url
   }
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
