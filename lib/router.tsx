@@ -1,13 +1,15 @@
+import { lazy } from 'react'
 import { createBrowserRouter } from 'react-router-dom'
 
 import { Layout } from '@/components/layout'
-import App from '@/src/App'
+
+const IndexPage = lazy(() => import('@/src/pages/index'))
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
-    children: [{ index: true, element: <App /> }],
+    children: [{ index: true, element: <IndexPage /> }],
   },
 ])
 

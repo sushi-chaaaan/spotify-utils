@@ -1,10 +1,13 @@
+import { Suspense } from 'react'
 import { Outlet, ScrollRestoration } from 'react-router-dom'
 
 export const Layout = () => {
   return (
     <>
       <ScrollRestoration />
-      <Outlet />
+      <Suspense fallback={<div style={{ backgroundColor: '#242424' }} />}>
+        <Outlet />
+      </Suspense>
     </>
   )
 }
