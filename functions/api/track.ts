@@ -9,7 +9,7 @@ export const onRequestGet: PagesFunction<Bindings> = async (ctx) => {
 
   const req = new Request(`${baseUrl}?url=${trackUrl}`, ctx.request.clone())
 
-  return new Response(JSON.stringify(req))
+  return new Response(JSON.stringify(req.body))
 
   return ctx.env.API_WORKER.fetch(req)
 }
