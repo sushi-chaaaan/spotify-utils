@@ -1,14 +1,10 @@
-import '@/src/App.css'
+import '@/src/styles/index.css'
 
 import { FormEventHandler, useState } from 'react'
 
 import { callApi } from '@/lib/callApi'
 
-// import viteLogo from '/vite.svg'
-// import reactLogo from '@/src/assets/react.svg'
-
-function App() {
-  // const [count, setCount] = useState(0)
+function IndexPage() {
   const [image, setImage] = useState<SpotifyApi.ImageObject>({
     height: 0,
     url: '',
@@ -61,4 +57,4 @@ function App() {
   )
 }
 
-export default App
+export default IndexPage
