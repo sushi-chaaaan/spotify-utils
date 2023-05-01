@@ -11,6 +11,18 @@ function App() {
   return (
     <>
       <div>
+        <h1>What`&apos;`s this?</h1>
+        <p>
+          This is a utility tools for Spotify:
+          <br />
+          <ul>
+            <li>Search for songs</li>
+            <li>Search for artists</li>
+            <li>Get artworks</li>
+          </ul>
+        </p>
+      </div>
+      {/* <div>
         <a href="https://vitejs.dev" rel="noreferrer" target="_blank">
           <img alt="Vite logo" className="logo" src={viteLogo} />
         </a>
@@ -29,7 +41,7 @@ function App() {
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
-      </p>
+      </p> */}
     </>
   )
 }
