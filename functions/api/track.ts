@@ -15,7 +15,9 @@ export const onRequestGet: PagesFunction<Bindings> = async (ctx) => {
 
   const { track } = (await response.json()) as fetchedTrackResponse
   const nowPlaying = `#NowPlaying
-${track.name} / ${track.artists.join(', ')} - ${track.album.name}
+${track.name} / ${track.artists.map((artist) => artist.name).join(', ')} - ${
+    track.album.name
+  }
 ${trackUrl}
 `
   const resp: trackResponse = {
