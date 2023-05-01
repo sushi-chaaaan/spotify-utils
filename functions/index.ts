@@ -5,10 +5,5 @@ export const onRequestGet: PagesFunction<Bindings> = async (ctx) => {
     return new Response('Missing url parameter', { status: 400 })
   }
 
-  const req = new Request(
-    'https://now-playing.sushichan.live',
-    ctx.request.clone()
-  )
-
-  return ctx.env.API_WORKER.fetch(req)
+  return ctx.env.API_WORKER.fetch(ctx.request)
 }
