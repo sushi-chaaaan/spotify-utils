@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true,
+    /* types */
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    },
+    "typeRoots": [
+      "src/types"
+    ],
+    "types": [
+      "@cloudflare/workers-types",
+      "@types/spotify-api"
+    ],
+  },
+  "include": [
+    "vite.config.ts"
+  ]
+}
