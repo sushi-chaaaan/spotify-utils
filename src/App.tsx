@@ -13,7 +13,7 @@ function App() {
 
   const getArtwork = async (url: string) => {
     const res = (await callApi(`/api/track?url=${url}`)) as trackInfo
-    console.log(res)
+    console.debug(res)
     return res.rawData.album.images[0].url
   }
 
