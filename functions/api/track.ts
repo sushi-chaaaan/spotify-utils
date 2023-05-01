@@ -23,7 +23,7 @@ ${trackUrl}
   const resp: trackResponse = {
     track,
     nowPlaying,
-    albumArtworkUrl: track.album.images[0].url,
+    albumArtwork: track.album.images[0],
   }
   return new Response(JSON.stringify(resp), {
     headers: rawResponse.headers,

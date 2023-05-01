@@ -12,9 +12,9 @@ function IndexPage() {
   })
 
   const getArtwork = async (url: string) => {
-    const res = (await callApi(`/api/track?url=${url}`)) as trackInfo
+    const res = (await callApi(`/api/track?url=${url}`)) as trackResponse
     console.debug(res)
-    return res.rawData.album.images[0]
+    return res.albumArtwork
   }
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {

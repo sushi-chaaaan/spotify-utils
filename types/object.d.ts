@@ -6,5 +6,5 @@ type fetchedTrackResponse = {
 type trackResponse = {
   track: SpotifyApi.TrackObjectFull
   nowPlaying: string
-  albumArtworkUrl: string
+  albumArtwork: SpotifyApi.ImageObject
 }
