@@ -5,7 +5,7 @@ export const onRequestGet: PagesFunction<Bindings> = async (ctx) => {
     return new Response('Missing url parameter', { status: 400 })
   }
 
-  return ctx.env.API_WORKER.fetch(ctx.request.clone(), {
+  return ctx.env.API_WORKER.fetch('/', {
     method: 'GET',
     body: new URLSearchParams({ url: trackUrl }),
   })
