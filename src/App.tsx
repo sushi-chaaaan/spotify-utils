@@ -9,12 +9,16 @@ import { callApi } from '@/lib/callApi'
 
 function App() {
   // const [count, setCount] = useState(0)
-  const [imageUrl, setImageUrl] = useState('')
+  const [image, setImage] = useState<SpotifyApi.ImageObject>({
+    height: 0,
+    url: '',
+    width: 0,
+  })
 
   const getArtwork = async (url: string) => {
     const res = (await callApi(`/api/track?url=${url}`)) as trackInfo
     console.debug(res)
-    return res.rawData.album.images[0].url
+    return res.rawData.album.images[0]
   }
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
@@ -23,7 +27,7 @@ function App() {
     const { value: trackUrl } = (e.target as HTMLFormElement).trackUrl
     getArtwork(trackUrl)
       .then((res) => {
-        setImageUrl(res)
+        setImage(res)
       })
       .catch((err) => {
         console.log(err)
@@ -50,7 +54,7 @@ function App() {
             <input defaultValue="" name="trackUrl" type="text" />
             <input type="submit" value="Submit" />
           </form>
-          <img src={imageUrl} width="600" />
+          <img height={image.height} src={image.url} width={image.width} />
         </div>
       </div>
       {/* <div>
