@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <div>
-        <h1>What`&apos;`s this?</h1>
+        <h1>What&apos;s this?</h1>
         <p>
           This is a utility tools for Spotify:
           <br />
