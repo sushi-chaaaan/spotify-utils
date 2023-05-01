@@ -4,6 +4,7 @@ export const onRequestGet: PagesFunction<Bindings> = async (ctx) => {
   if (!trackUrl) {
     return new Response('Missing url parameter', { status: 400 })
   }
+  const req = new Request(new URL(ctx.request.url).host, ctx.request)
 
-  return ctx.env.API_WORKER.fetch(ctx.request)
+  return ctx.env.API_WORKER.fetch(req)
 }
