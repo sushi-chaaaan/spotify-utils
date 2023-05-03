@@ -2,6 +2,7 @@ import '@/src/styles/index.css'
 
 import { FormEventHandler, useState } from 'react'
 
+import ResizedImage from '@/components/resizedImage'
 import { callApi } from '@/lib/callApi'
 
 function IndexPage() {
@@ -49,10 +50,13 @@ function IndexPage() {
         {trackInfo && (
           <>
             <h3>Album Artwork:</h3>
-            <img
-              height={trackInfo.albumArtwork.height}
+            <ResizedImage
+              alt="Album Artwork"
+              fallbackWidth={480}
+              height={trackInfo.albumArtwork.height || 480}
+              noMoreThanSource
               src={trackInfo.albumArtwork.url}
-              width={trackInfo.albumArtwork.width}
+              width={trackInfo.albumArtwork.width || 480}
             />
             <h3>Track&apos;s #NowPlaying Tweet:</h3>
             <p>{trackInfo.nowPlaying}</p>
