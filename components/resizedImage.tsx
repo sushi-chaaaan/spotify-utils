@@ -47,8 +47,9 @@ const ResizedImage: React.FC<ResizedImageProps> = ({
 
   useEffect(() => {
     const onResize = () => {
-      const displayWidth = window.innerWidth
-      setImageSide(displayWidth)
+      const clientWidth = document.documentElement.clientWidth
+      // const displayWidth = window.innerWidth
+      setImageSide(clientWidth)
     }
     onResize()
     window.addEventListener('resize', onResize)
