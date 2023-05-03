@@ -12,6 +12,7 @@ type ResizedImageProps = {
   height: number
   width: number
 
+  noMoreThanSource?: boolean
   priority?: boolean
 }
 
@@ -26,6 +27,7 @@ const ResizedImage: React.FC<ResizedImageProps> = ({
   height,
   width,
 
+  noMoreThanSource = false,
   priority = false,
 }) => {
   if (fallbackWidth === undefined && fallbackHeight === undefined) {
@@ -53,14 +55,34 @@ const ResizedImage: React.FC<ResizedImageProps> = ({
     return () => window.removeEventListener('resize', onResize)
   })
 
+  const getResolvedSize = (side: 'width' | 'height') => {
+    if (side === 'width') {
+      const resolvedWidth = adjustTargetIsWidth
+        ? imageSide
+        : width * (imageSide / height)
+      if (noMoreThanSource && resolvedWidth > width) {
+        return width
+      }
+      return resolvedWidth
+    } else {
+      const resolvedHeight = adjustTargetIsWidth
+        ? height * (imageSide / width)
+        : imageSide
+      if (noMoreThanSource && resolvedHeight > height) {
+        return height
+      }
+      return resolvedHeight
+    }
+  }
+
   return (
     <img
       alt={alt}
       className={className}
-      height={adjustTargetIsWidth ? height * (imageSide / width) : imageSide}
+      height={getResolvedSize('height')}
       loading={priority ? 'eager' : 'lazy'}
       src={src}
-      width={adjustTargetIsWidth ? imageSide : width * (imageSide / height)}
+      width={getResolvedSize('width')}
     />
   )
 }
