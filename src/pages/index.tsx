@@ -54,6 +54,7 @@ function IndexPage() {
               alt="Album Artwork"
               fallbackWidth={480}
               height={trackInfo.albumArtwork.height || 480}
+              noMoreThanSource
               src={trackInfo.albumArtwork.url}
               width={trackInfo.albumArtwork.width || 480}
             />
