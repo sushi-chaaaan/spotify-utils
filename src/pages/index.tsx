@@ -72,8 +72,16 @@ function IndexPage() {
             />
             <h3>Track&apos;s #NowPlaying Tweet:</h3>
             <p>{trackInfo.nowPlaying}</p>
-            <TweetButton tweet={trackInfo.nowPlaying} />
-            <MisskeyButton tweet={trackInfo.nowPlaying} />
+            <div
+              style={{
+                display: 'flex',
+                flexFlow: 'column nowrap',
+                gap: '1rem',
+              }}
+            >
+              <TweetButton tweet={trackInfo.nowPlaying} />
+              <MisskeyButton tweet={trackInfo.nowPlaying} />
+            </div>
           </>
         )}
       </>
