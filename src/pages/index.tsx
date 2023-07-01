@@ -44,6 +44,18 @@ function IndexPage() {
     )
   }
 
+  const MisskeyButton = ({ tweet }: { tweet: string }) => {
+    return (
+      <a
+        href={`https://misskey.io/share?text=${encodeURIComponent(tweet)}`}
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        Post note on misskey.io
+      </a>
+    )
+  }
+
   const TrackInfoSection = () => {
     return (
       <>
@@ -61,6 +73,7 @@ function IndexPage() {
             <h3>Track&apos;s #NowPlaying Tweet:</h3>
             <p>{trackInfo.nowPlaying}</p>
             <TweetButton tweet={trackInfo.nowPlaying} />
+            <MisskeyButton tweet={trackInfo.nowPlaying} />
           </>
         )}
       </>
